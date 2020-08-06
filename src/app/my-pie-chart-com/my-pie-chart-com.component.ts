@@ -1,3 +1,4 @@
+import { ConstantsService } from './../common/services/constants.service';
 import { EmailStatsService } from "./../email-stats.service";
 import { Component, OnInit } from "@angular/core";
 import { analyzeAndValidateNgModules } from "@angular/compiler";
@@ -8,28 +9,18 @@ import { analyzeAndValidateNgModules } from "@angular/compiler";
   styleUrls: ["./my-pie-chart-com.component.css"],
 })
 export class MyPieChartComComponent implements OnInit {
-  public pieChartLabels = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+  public pieChartLabels = [""];
 
   public pieChartData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   public pieChartType = "pie";
 
-  constructor(private emailStatsService: EmailStatsService) {}
+  constructor(private emailStatsService: EmailStatsService,
+    private _constant: ConstantsService
+    ) {}
 
   ngOnInit(): void {
+    this.pieChartLabels = this._constant.monthlyChartLabels;
     this.emailStatsService.getTotalEmails().subscribe((res: any) => {
       let comEmails = this.emailStatsService.filterPieEmailsByType(res, "COM");
 

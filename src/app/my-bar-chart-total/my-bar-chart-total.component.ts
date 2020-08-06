@@ -1,3 +1,4 @@
+import { ConstantsService } from './../common/services/constants.service';
 import { EmailStatsService } from "./../email-stats.service";
 import { Component, OnInit } from "@angular/core";
 
@@ -12,21 +13,7 @@ export class MyBarChartTotalComponent implements OnInit {
     responsive: true,
   };
 
-  public barChartLabels = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-
+  public barChartLabels = [""];
   public barChartType = "bar";
   public barChartLegend = true;
 
@@ -38,9 +25,13 @@ export class MyBarChartTotalComponent implements OnInit {
     },
   ];
 
-  constructor(private emailStatsService: EmailStatsService) {}
+  constructor(
+    private emailStatsService: EmailStatsService,
+    private _constant: ConstantsService
+  ) {}
 
   ngOnInit(): void {
+    this.barChartLabels = this._constant.monthlyChartLabels;
     this.emailStatsService.getYearlyEmails().subscribe((res: any) => {
       let comEmails = this.emailStatsService.filterEmailsByType(res, "TOTAL");
       this.emailStatsService.initializeGraphs(this.barChartData, comEmails);

@@ -1,3 +1,4 @@
+import { ConstantsService } from './../common/services/constants.service';
 import { EmailStatsService } from './../email-stats.service';
 import { Component, OnInit } from "@angular/core";
 
@@ -7,20 +8,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./my-radar-chart-total.component.css"],
 })
 export class MyRadarChartTotalComponent implements OnInit {
-  public radarChartLabels = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+  public radarChartLabels = [""];
 
   public radarChartType = "radar";
 
@@ -32,9 +20,14 @@ export class MyRadarChartTotalComponent implements OnInit {
     },
   ];
 
-  constructor(private emailStatsService: EmailStatsService) {}
+  constructor(
+    private emailStatsService: EmailStatsService,
+    private _constant: ConstantsService
+  ) {}
 
   ngOnInit(): void {
+    this.radarChartLabels = this._constant.monthlyChartLabels;
+    
     this.emailStatsService.getYearlyEmails().subscribe((res: any) => {
       let comEmails = this.emailStatsService.filterEmailsByType(res, "TOTAL");
       this.emailStatsService.initializeGraphs(this.radarChartData, comEmails);

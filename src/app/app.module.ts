@@ -1,3 +1,4 @@
+import { ConstantsService } from './common/services/constants.service';
 import { MyRadarChartSeComponent } from "./my-radar-chart-se/my-radar-chart-se.component";
 import { MyRadarChartComComponent } from "./my-radar-chart-com/my-radar-chart-com.component";
 import { MyBarChartSeComponent } from "./my-bar-chart-se/my-bar-chart-se.component";
@@ -46,7 +47,7 @@ import { MyRadarChartTotalComponent } from "./my-radar-chart-total/my-radar-char
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [ConstantsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
