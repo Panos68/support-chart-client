@@ -1,0 +1,25 @@
+<div *ngIf="router.url  !== '/'">
+<nav>
+  <ul>
+    <li><a routerLink="se">Se emails</a></li>
+    <li><a routerLink="com">Com emails</a></li>
+    <li><a routerLink="total">Total emails</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
+</div>
+
+<div *ngIf="route.children.length === 0">
+  <div *ngIf="router.url === '/linear-chart'">
+    <my-linear-chart-total></my-linear-chart-total>
+  </div>
+  <div *ngIf="router.url === '/pie-chart'">
+    <my-pie-chart-total></my-pie-chart-total>
+  </div>
+  <div *ngIf="router.url === '/radar-chart'">
+    <my-radar-chart-total></my-radar-chart-total>
+  </div>
+  <div *ngIf="router.url === '/bar-chart'">
+    <my-bar-chart-total></my-bar-chart-total>
+  </div>
+</div>
