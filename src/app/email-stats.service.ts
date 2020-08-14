@@ -1,3 +1,4 @@
+import { ConstantsService } from './common/services/constants.service';
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
@@ -6,13 +7,13 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class EmailStatsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private constService : ConstantsService) {}
 
-  totalEmailsUrl = "http://localhost:8080/supportChart/total";
+  totalEmailsUrl = this.constService.backendUrl+"supportChart/total";
 
-  yearlyEmailsUrl = "http://localhost:8080/supportChart/yearly";
+  yearlyEmailsUrl = this.constService.backendUrl+"supportChart/yearly";
 
-  login = "http://localhost:8080/supportChart/login";
+  login = this.constService.backendUrl+"supportChart/login";
 
   getTotalEmails(): Observable<any> {
     return this.http.get(this.totalEmailsUrl);

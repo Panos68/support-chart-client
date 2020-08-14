@@ -19,5 +19,8 @@ export class ConstantsService {
     "Dec",
   ];
 
+  readonly backendUrl = "http://localhost:8080/"
+
+
   constructor() { }
 }
