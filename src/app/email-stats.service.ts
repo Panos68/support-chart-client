@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable, of } from "rxjs";
-import { catchError, map } from "rxjs/operators";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -13,12 +12,19 @@ export class EmailStatsService {
 
   yearlyEmailsUrl = "http://localhost:8080/supportChart/yearly";
 
+  login = "http://localhost:8080/supportChart/login";
+
   getTotalEmails(): Observable<any> {
     return this.http.get(this.totalEmailsUrl);
   }
 
   getYearlyEmails(): Observable<any> {
     return this.http.get(this.yearlyEmailsUrl);
+  }
+
+  isPinCorrect(givenPin: any): Observable<any> {
+    let httpParams = new HttpParams().set('givenPin', givenPin); 
+    return this.http.get(this.login, { params: httpParams });
   }
 
   filterPieEmailsByType(emailStats: any, type: String): any {
@@ -54,8 +60,8 @@ export class EmailStatsService {
         data: Object.values(email.emailsSent),
         backgroundColor: color,
         label: email.year,
-        fill :"false",
-        borderColor : color,
+        fill: "false",
+        borderColor: color,
       });
     });
   }

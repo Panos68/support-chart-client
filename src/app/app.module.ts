@@ -21,6 +21,7 @@ import { MyPieChartComComponent } from "./my-pie-chart-com/my-pie-chart-com.comp
 import { MyLinearChartComComponent } from "./my-linear-chart-com/my-linear-chart-com.component";
 
 import { MyRadarChartTotalComponent } from "./my-radar-chart-total/my-radar-chart-total.component";
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MyRadarChartTotalComponent } from "./my-radar-chart-total/my-radar-char
     MyRadarChartSeComponent,
     MyRadarChartComComponent,
     MyRadarChartTotalComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
