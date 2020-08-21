@@ -9,11 +9,11 @@ import { Observable } from "rxjs";
 export class EmailStatsService {
   constructor(private http: HttpClient,private constService : ConstantsService) {}
 
-  totalEmailsUrl = this.constService.backendUrl+"supportChart/total";
+  totalEmailsUrl = this.constService.backendUrl+"/supportChart/total";
 
-  yearlyEmailsUrl = this.constService.backendUrl+"supportChart/yearly";
+  yearlyEmailsUrl = this.constService.backendUrl+"/supportChart/yearly";
 
-  login = this.constService.backendUrl+"supportChart/login";
+  login = this.constService.backendUrl+"/supportChart/login";
 
   getTotalEmails(): Observable<any> {
     return this.http.get(this.totalEmailsUrl);
