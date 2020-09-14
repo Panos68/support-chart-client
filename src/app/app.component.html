@@ -1,6 +1,6 @@
 
 <div *ngIf="router.url  === '/'">
-  <input id="password" (keyup.enter)="checkPin($event)" maxlength="4" placeholder="Enter Pin" name="password" required /> 
+  <input type="password" id="password" (keyup.enter)="checkPin($event)" maxlength="4" placeholder="Enter Pin" name="password" required /> 
   </div>
 <div>
   <router-outlet></router-outlet>
